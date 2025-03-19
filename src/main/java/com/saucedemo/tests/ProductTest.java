@@ -1,21 +1,19 @@
 package com.saucedemo.tests;
 
 import com.saucedemo.base.BaseTest;
-import com.saucedemo.tests.LoginTest;
 import com.saucedemo.pages.HomePage;
-import com.saucedemo.pages.CartPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ProductTest extends BaseTest {
-    @Test(priority = 2, dependsOnMethods = "com.saucedemo.tests.LoginTest.testLogin")
-    public void testAddProductToCart() {
-        HomePage homePage = new HomePage(driver);
+
+    @Test(priority = 2)
+    public void addProductToCartTest() {
+        HomePage homePage = new HomePage(driver);  // Same driver reuse hoga
+        Assert.assertTrue(homePage.isUserLoggedIn(), "User is not logged in!"); // Ensure user is logged in
 
         homePage.addProductToCart();
-        homePage.goToCart();
 
-        CartPage cartPage = new CartPage(driver);
-        Assert.assertTrue(cartPage.isProductInCart(), "Product not found in Cart!");
+        Assert.assertTrue(homePage.isProductAdded(), "Product was not added to cart!");
     }
 }
