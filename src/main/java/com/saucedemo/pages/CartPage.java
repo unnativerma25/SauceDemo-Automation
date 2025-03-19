@@ -15,8 +15,9 @@ public class CartPage {
         this.driver = driver;
     }
 
-    public void proceedToCheckout(WebDriverWait wait) {
+    public void proceedToCheckout(WebDriverWait wait) throws InterruptedException {
         wait.until(ExpectedConditions.visibilityOfElementLocated(cartItem));
+        Thread.sleep(1000);
         Assert.assertTrue(driver.findElement(cartItem).isDisplayed(), "No item found in cart!");
         wait.until(ExpectedConditions.elementToBeClickable(checkoutButton)).click();
     }

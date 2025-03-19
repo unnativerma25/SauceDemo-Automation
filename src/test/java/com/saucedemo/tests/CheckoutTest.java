@@ -6,9 +6,14 @@ import org.testng.annotations.Test;
 
 public class CheckoutTest extends BaseTest {
     @Test(priority = 4)
-    public void testCheckoutProcess() {
+    public void testCheckoutProcess() throws InterruptedException {
         CheckoutPage checkoutPage = new CheckoutPage(driver);
         checkoutPage.enterCheckoutDetails("John", "Doe", "12345", wait);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         checkoutPage.completeCheckout(wait);
     }
 }

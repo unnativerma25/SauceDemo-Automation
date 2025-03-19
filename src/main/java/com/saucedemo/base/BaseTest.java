@@ -12,13 +12,15 @@ public class BaseTest {
     protected static WebDriverWait wait;
 
     @BeforeSuite
-    public void setup() {
+    public void setup() throws InterruptedException {
         if (driver == null) {  // 🔹 Ensures driver is initialized only once
 //            System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
             driver = new ChromeDriver();
             wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
             driver.manage().window().maximize();
             driver.get("https://www.saucedemo.com/");
+            Thread.sleep(1000);
         }
     }
 

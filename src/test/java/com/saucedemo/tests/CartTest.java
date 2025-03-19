@@ -6,8 +6,13 @@ import org.testng.annotations.Test;
 
 public class CartTest extends BaseTest {
     @Test(priority = 3)
-    public void testCartAndProceedToCheckout() {
+    public void testCartAndProceedToCheckout() throws InterruptedException {
         CartPage cartPage = new CartPage(driver);
         cartPage.proceedToCheckout(wait);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

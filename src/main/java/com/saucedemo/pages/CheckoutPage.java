@@ -19,15 +19,19 @@ public class CheckoutPage {
         this.driver = driver;
     }
 
-    public void enterCheckoutDetails(String fName, String lName, String zip, WebDriverWait wait) {
+    public void enterCheckoutDetails(String fName, String lName, String zip, WebDriverWait wait) throws InterruptedException {
         driver.findElement(firstName).sendKeys(fName);
+        Thread.sleep(1000);
         driver.findElement(lastName).sendKeys(lName);
+        Thread.sleep(1000);
         driver.findElement(postalCode).sendKeys(zip);
+        Thread.sleep(1000);
         wait.until(ExpectedConditions.elementToBeClickable(continueButton)).click();
     }
 
-    public void completeCheckout(WebDriverWait wait) {
+    public void completeCheckout(WebDriverWait wait) throws InterruptedException {
         wait.until(ExpectedConditions.elementToBeClickable(finishButton)).click();
+        Thread.sleep(1000);
         Assert.assertTrue(driver.findElement(successMessage).isDisplayed(), "Checkout failed!");
     }
 }

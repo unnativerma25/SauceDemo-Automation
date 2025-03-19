@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
     @Test(priority = 1)
-    public void testLogin() {
+    public void testLogin() throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("standard_user", "secret_sauce", wait);
     }

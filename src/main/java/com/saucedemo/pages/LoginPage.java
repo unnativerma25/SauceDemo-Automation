@@ -18,10 +18,13 @@ public class LoginPage {
         this.driver = driver;
     }
 
-    public void login(String username, String password, WebDriverWait wait) {
+    public void login(String username, String password, WebDriverWait wait) throws InterruptedException {
         driver.findElement(usernameField).sendKeys(username);
+        Thread.sleep(1000);
         driver.findElement(passwordField).sendKeys(password);
+        Thread.sleep(1000);
         driver.findElement(loginButton).click();
+        Thread.sleep(1000);
         wait.until(ExpectedConditions.visibilityOfElementLocated(inventoryContainer));
         Assert.assertTrue(driver.findElement(inventoryContainer).isDisplayed(), "Login Failed!");
     }

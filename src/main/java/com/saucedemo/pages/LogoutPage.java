@@ -15,8 +15,9 @@ public class LogoutPage {
         this.driver = driver;
     }
 
-    public void logout(WebDriverWait wait) {
+    public void logout(WebDriverWait wait) throws InterruptedException {
         wait.until(ExpectedConditions.elementToBeClickable(menuButton)).click();
+        Thread.sleep(1000);
         wait.until(ExpectedConditions.elementToBeClickable(logoutButton)).click();
         Assert.assertTrue(driver.getCurrentUrl().contains("saucedemo.com"), "Logout failed!");
     }

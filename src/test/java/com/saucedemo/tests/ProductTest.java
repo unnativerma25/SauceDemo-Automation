@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class ProductTest extends BaseTest {
     @Test(priority = 2)
-    public void testAddProductToCart() {
+    public void testAddProductToCart() throws InterruptedException {
         HomePage homePage = new HomePage(driver);
         homePage.addProductToCart(wait);
         homePage.goToCart(wait);
