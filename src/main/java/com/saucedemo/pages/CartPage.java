@@ -2,10 +2,12 @@ package com.saucedemo.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 public class CartPage {
     private WebDriver driver;
-
     private By checkoutButton = By.id("checkout");
     private By cartItem = By.className("cart_item");
 
@@ -13,11 +15,9 @@ public class CartPage {
         this.driver = driver;
     }
 
-    public boolean isProductInCart() {
-        return driver.findElements(cartItem).size() > 0;
-    }
-
-    public void proceedToCheckout() {
-        driver.findElement(checkoutButton).click();
+    public void proceedToCheckout(WebDriverWait wait) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(cartItem));
+        Assert.assertTrue(driver.findElement(cartItem).isDisplayed(), "No item found in cart!");
+        wait.until(ExpectedConditions.elementToBeClickable(checkoutButton)).click();
     }
 }
