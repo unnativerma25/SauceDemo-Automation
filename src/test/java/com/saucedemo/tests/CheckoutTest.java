@@ -2,6 +2,8 @@ package com.saucedemo.tests;
 
 import com.saucedemo.base.BaseTest;
 import com.saucedemo.pages.CheckoutPage;
+import com.saucedemo.pages.OrderConfirmationPage;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CheckoutTest extends BaseTest {
@@ -15,5 +17,12 @@ public class CheckoutTest extends BaseTest {
             throw new RuntimeException(e);
         }
         checkoutPage.completeCheckout(wait);
+    }
+
+    @Test(priority = 6, dependsOnMethods = "testCheckoutProcess")
+    public void testOrderConfirmation() {
+        OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
+        Assert.assertTrue(orderConfirmationPage.isOrderSuccessful(), "❌ Order was not placed successfully!");
+        System.out.println("✅ Order placed successfully and confirmation verified!");
     }
 }

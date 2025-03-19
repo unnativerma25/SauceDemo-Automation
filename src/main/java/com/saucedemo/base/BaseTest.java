@@ -8,13 +8,12 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
 public class BaseTest {
-    protected static WebDriver driver;  // 🔹 Use static driver for the same session
+    protected static WebDriver driver;  //  Use static driver for the same session
     protected static WebDriverWait wait;
 
     @BeforeSuite
     public void setup() throws InterruptedException {
-        if (driver == null) {  // 🔹 Ensures driver is initialized only once
-//            System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+        if (driver == null) {  //  Ensures driver is initialized only once
             driver = new ChromeDriver();
             wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
@@ -28,7 +27,7 @@ public class BaseTest {
     public void tearDown() {
         if (driver != null) {
 //            driver.quit();
-            driver = null;  // 🔹 Reset driver after all tests are done
+            driver = null;  //  Reset driver after all tests are done
         }
     }
 }

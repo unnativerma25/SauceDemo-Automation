@@ -5,7 +5,7 @@ import com.saucedemo.pages.LogoutPage;
 import org.testng.annotations.Test;
 
 public class LogoutTest extends BaseTest {
-    @Test(priority = 6)
+    @Test(priority = 7)
     public void testLogout() throws InterruptedException {
         LogoutPage logoutPage = new LogoutPage(driver);
 

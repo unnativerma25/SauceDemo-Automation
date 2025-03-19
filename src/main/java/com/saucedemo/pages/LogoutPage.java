@@ -19,6 +19,7 @@ public class LogoutPage {
         wait.until(ExpectedConditions.elementToBeClickable(menuButton)).click();
         Thread.sleep(1000);
         wait.until(ExpectedConditions.elementToBeClickable(logoutButton)).click();
+
         Assert.assertTrue(driver.getCurrentUrl().contains("saucedemo.com"), "Logout failed!");
     }
 }

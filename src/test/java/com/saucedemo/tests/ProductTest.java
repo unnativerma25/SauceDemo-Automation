@@ -8,7 +8,7 @@ public class ProductTest extends BaseTest {
     @Test(priority = 2)
     public void testSortDropdown() throws InterruptedException {
         HomePage homePage = new HomePage(driver);
-        homePage.selectSortingOption("Price (low to high)");  // 🔹 Selecting sorting option
+        homePage.selectSortingOption("Price (low to high)");  //  Selecting sorting option
 
 
     }
