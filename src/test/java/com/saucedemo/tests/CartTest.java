@@ -5,7 +5,7 @@ import com.saucedemo.pages.CartPage;
 import org.testng.annotations.Test;
 
 public class CartTest extends BaseTest {
-    @Test(priority = 3)
+    @Test(priority = 4)
     public void testCartAndProceedToCheckout() throws InterruptedException {
         CartPage cartPage = new CartPage(driver);
         cartPage.proceedToCheckout(wait);
